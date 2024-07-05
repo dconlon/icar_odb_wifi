@@ -64,7 +64,7 @@ icar = obd.OBD("192.168.4.67", 35000)
 # Command specification for ODB PID 015B
 battery = OBDCommand("BATTERY_LEVEL", "Battery Level", b"015B", 3, percent, ECU.ENGINE, True)
 
-response = connection.query(battery)
+response = icar.query(battery)
 
 print(f"Battery level: {response.value}")
 
