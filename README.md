@@ -30,7 +30,7 @@ If at any point you loose network access to the LPT230 you must open up the iCar
 
 ## ELM327 Configuration
 
-The iCar 2 will turn off WiFi when ELM327 enters lower power mode and can then only be awoken by pressing the power button on it.  Out of the box this is after 20 mins of inactivity.  The Programmable Parameters (PP) section of the ELM327 manual documents all configuration options including PP 0E - a bitmap of power control options.
+The iCar 2 will turn off WiFi when ELM327 enters lower power mode (out of the box this is after 20 mins inactivity) and can then only be awoken by pressing the power button on it.  The Programmable Parameters (PP) section of the ELM327 manual documents all configuration options including PP 0E - a bitmap of power control options.
 
 Using @dailab’s [fork of python-OBD](https://github.com/dailab/python-OBD-wifi/tree/master) (which connects to ELM327 over TCP instead of serial port) disable the low power functions:
 
