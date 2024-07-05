@@ -37,19 +37,16 @@ Using @dailab’s [fork of python-OBD](https://github.com/dailab/python-OBD-wifi
 ```python
 import obd
 
-icar = obd.OBD("192.168.4.67", 35000)  # IP of LPT230 on network
+icar = obd.OBD("192.168.1.134", 35000)  # IP of LPT230 on network
 
 elm327 = icar.interface
 
-# Out of the box my iCar had FA at PP0E (11111010), toggle first bit to disable all low power (01111010 = 7A)
+# Out of the box my iCar had FA at PP0E (11111010), toggle first bit to 
+# disable all low power (01111010 = 7A)
 elm327.send_and_parse(b"ATPP0ESV7A")
 
-# Save the new setting
+# Save the new setting, takes effect after power cycle
 elm327.send_and_parse(b"ATPP0EON")
-
-# Retrieve the PPs
-resp = elm327.send_and_parse(b"ATPPS")
-
 ```
 
 The iCar 2 now stays on permanently and connects to my home WiFi when the car arrives home and is in range of my WiFi.
@@ -65,7 +62,7 @@ from obd.OBDCommand import OBDCommand
 from obd.decoders import percent
 from obd.protocols import ECU
 
-icar = obd.OBD("192.168.4.67", 35000)
+icar = obd.OBD("192.168.1.134", 35000)
 
 # Command specification for ODB PID 015B
 battery = OBDCommand("BATTERY_LEVEL", "Battery Level", b"015B", 3, percent, ECU.ENGINE, True)
@@ -73,5 +70,6 @@ battery = OBDCommand("BATTERY_LEVEL", "Battery Level", b"015B", 3, percent, ECU.
 response = icar.query(battery)
 
 print(f"Battery level: {response.value}")
+```
 
 For my vehicle (2021 Range Rover Velar PHEV) certain parameters including EV state of charge seem to be always accessible whilst others (everything related to the ICE) become inaccessible a few minutes after the ignition is turned off.
