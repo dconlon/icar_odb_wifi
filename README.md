@@ -3,7 +3,7 @@ I needed to make the EV battery state of charge % from my vehicle accessible pro
 
 ## Vgate iCar Pro WiFi
 
-The [Vgate iCar 2 WiFi](https://www.vgatemall.com/products-detail/i-14/) is [available on Amazon](https://www.amazon.co.uk/Vgate-interface-diagnostics-android-windows/dp/B00OY0X8IS/ref=pd_day0fbt_d_sccl_2/262-5009615-3485139) for < £30 .  It plugs into the ODB2 port of the vehicle and is small and unobtrusive enough to leave plugged in inside the car permanently.
+The [Vgate iCar 2 WiFi](https://www.vgatemall.com/products-detail/i-14/) is [available on Amazon](https://www.amazon.co.uk/Vgate-interface-diagnostics-android-windows/dp/B00OY0X8IS/ref=pd_day0fbt_d_sccl_2/262-5009615-3485139) for < £30.  It plugs into the ODB2 port of the vehicle and is small and unobtrusive enough to leave plugged in inside the car permanently.
 
 Internally it consists of: 
 
@@ -17,6 +17,8 @@ Out of the box the LPT230 is configured as an AP broadcasting an open network wi
 Considering that the vehicle OBD2 port is writable, I don’t want the iCar plugged in permanently broadcasting an open WiFi network.  
 
 The 1MB flash version of the LPT230 unfortunately does not have a full web interface but it is sufficient to change WiFi configuration to station mode to have the LPT230 connect to your home WiFi instead of it being an open AP.  Whilst connected to the V-LINK WiFi open a web browser to http://192.168.0.10, username "guest”, password “&^)@@)” (obtained using AT+WEBU):
+
+![web interface](img/web-interface.png)
 
 Using the web interface method above only the WiFi mode is changed so the LPT230 remains as a TCP server on port 35000 of whatever IP your DHCP server gives it.  To change any other configuration Hi Flying offer a (Windows only) tool which will send any of the AT commands documented in the manual above to the MAC of the LPT230.  Options are available to configure it as an AP with WPA2 security and/or have it be a TCP or UDP client that sends data to a socket on your home server.
 
