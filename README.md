@@ -50,6 +50,22 @@ The iCar 2 now stays on permanently and connects to my home WiFi when the car ar
 
 ## Communicating with the vehicle
 
-My use case is to fetch EV battery state of charge but you can read any parameter you know the OBD2 PID for.
+My use case is to fetch EV battery state of charge but you could read any parameter you know the OBD2 PID for.
 
-For my vehicle (2021 Range Rover Velar PHEV) certain parameters including EV state of charge seem to be always accessible whilst others (e.g. petrol fuel level) become inaccessible a few minutes after the ignition is turned off.
+```python
+import obd
+
+from obd.OBDCommand import OBDCommand
+from obd.decoders import percent
+from obd.protocols import ECU
+
+icar = obd.OBD("192.168.4.67", 35000)
+
+# Command specification for ODB PID 015B
+battery = OBDCommand("BATTERY_LEVEL", "Battery Level", b"015B", 3, percent, ECU.ENGINE, True)
+
+response = connection.query(battery)
+
+print(f"Battery level: {response.value}")
+
+For my vehicle (2021 Range Rover Velar PHEV) certain parameters including EV state of charge seem to be always accessible whilst others (everything related to the ICE) become inaccessible a few minutes after the ignition is turned off.
