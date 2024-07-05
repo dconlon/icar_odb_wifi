@@ -10,13 +10,13 @@ Internally it consists of:
 1. ELM327 ODB to RS232 interpreter ([manual](https://www.elmelectronics.com/DSheets/ELM327DSH.pdf))
 2. [Hi-Flying LPT230](http://www.hi-flying.com/hf-lpt230) UART to WiFi module - 1MB flash version ([manual](https://fccid.io/2ACSV-HF-LPT230/User-Manual/Users-Manual-3552381.pdf))
 
-Out of the box the LPT230 is configured as an AP broadcasting an open network with SSID “V-Link”.  After connecting to the WiFi network the LPT230 is 192.168.0.10 and its TCP port 35000 provides transparent bi-directional access to the RS232 side of the ELM327.
+Out of the box the LPT230 is configured as an AP broadcasting an open network with SSID “V-LINK”.  After connecting to the WiFi network the LPT230 is 192.168.0.10 and its TCP port 35000 provides transparent bi-directional access to the RS232 side of the ELM327.
 
 ## LPT230 Configuration
 
-Considering that the vehicle OBD2 port is writable, I didn’t want to leave the iCar plugged in permanently broadcasting an open WiFi network.  
+Considering that the vehicle OBD2 port is writable, I don’t want the iCar plugged in permanently broadcasting an open WiFi network.  
 
-The 1MB flash version of the LPT230 unfortunately does not have a full web interface but it is sufficient to change WiFi configuration to station mode to have the LPT230 connect to your home WiFi instead of it being an open AP.  Whilst connected to the V-Link WiFi open a web browser to http://192.168.0.10 login with username “guest” password “”:
+The 1MB flash version of the LPT230 unfortunately does not have a full web interface but it is sufficient to change WiFi configuration to station mode to have the LPT230 connect to your home WiFi instead of it being an open AP.  Whilst connected to the V-LINK WiFi open a web browser to http://192.168.0.10, username "guest”, password “&^)@@)” (obtained using AT+WEBU):
 
 Using the web interface method above only the WiFi mode is changed so the LPT230 remains as a TCP server on port 35000 of whatever IP your DHCP server gives it.  To change any other configuration Hi Flying offer a (Windows only) tool which will send any of the AT commands documented in the manual above to the MAC of the LPT230.  Options are available to configure it as an AP with WPA2 security and/or have it be a TCP or UDP client that sends data to a socket on your home server.
 
