@@ -28,7 +28,23 @@ The iCar 2 will turn off WiFi when ELM327 enters lower power mode and can the on
 
 Using @dailab’s [fork of python-OBD](https://github.com/dailab/python-OBD-wifi/tree/master) (which connects to ELM327 over TCP instead of serial port) the following code will disable the low power functions:
 
+```python
+import obd
 
+icar = obd.OBD("192.168.4.67", 35000)  # IP of LPT230 on network
+
+elm327 = icar.interface
+
+# Change default FA to 1A
+elm327.send_and_parse(b"ATPP0ESV1A")
+
+# Save the new setting
+elm327.send_and_parse(b"ATPP0EON")
+
+# Retrieve the PPs
+resp = elm327.send_and_parse(b"ATPPS")
+
+```
 
 The iCar 2 now stays on permanently and connects to my home WiFi when the car arrives home and is in range of my WiFi.
 
