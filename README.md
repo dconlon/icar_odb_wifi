@@ -3,7 +3,7 @@ I needed to make the EV battery state of charge % from my vehicle accessible pro
 
 ## Vgate iCar Pro WiFi
 
-The [Vgate iCar 2 WiFi](https://www.vgatemall.com/products-detail/i-14/) is [available on eBay]((https://www.ebay.co.uk/itm/315178202059) for ~£16 (or AliExpress for less).  It plugs into the ODB2 port of the vehicle and is small and unobtrusive enough to leave plugged in inside the car permanently.
+The [Vgate iCar 2 WiFi](https://www.vgatemall.com/products-detail/i-20/) is [available on eBay](https://www.ebay.co.uk/itm/315178202059) for ~£16 (or AliExpress for less).  It plugs into the ODB2 port of the vehicle and is small and unobtrusive enough to leave plugged in inside the car permanently.
 
 Internally it consists of: 
 
@@ -53,7 +53,7 @@ The iCar 2 now stays on permanently and connects to my home WiFi when the car ar
 
 ## Communicating with the vehicle
 
-My use case is to fetch EV battery state of charge but you could read any parameter you know the OBD2 PID for.
+My use case is to fetch EV battery state of charge but you could read any parameter you know the OBD2 PID for.  Wikipedia has a [list of standard PIDs](https://en.wikipedia.org/wiki/OBD-II_PIDs), manufacturer proprietory ones may be found on forums.
 
 ```python
 import obd
