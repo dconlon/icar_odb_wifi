@@ -20,9 +20,13 @@ The 1MB flash version of the LPT230 unfortunately does not have a full web inter
 
 ![web interface](img/web-interface.png)
 
-Using the web interface method above only the WiFi mode is changed so the LPT230 remains as a TCP server on port 35000 of whatever IP your DHCP server gives it.  To change any other configuration Hi Flying offer a (Windows only) tool which will send any of the AT commands documented in the manual above to the MAC of the LPT230.  Options are available to configure it as an AP with WPA2 security and/or have it be a TCP or UDP client that sends data to a socket on your home server.
+Using the web interface method above only the WiFi mode is changed so the LPT230 remains as a TCP server on port 35000 of whatever IP your DHCP server gives it.  To change any other configuration Hi Flying offer a [Windows/Android tool](http://www.hi-flying.com/download-center-1/applications-1/download-item-wifi-config-tools-v1-0) which will send any of the AT commands documented in the manual above to the MAC of the LPT230.  Options are available to configure it as an AP with WPA2 security and/or have it be a TCP or UDP client that sends data to a socket on your home server.
+
+![config tool](img/wifi-config-util.png)
 
 If at any point you loose network access to the LPT230 you must open up the iCar 2 and jumper together pins 12 (nReload) and 16 (Gnd) of the LPT230 for 4 seconds after which the default configuration (open WiFi network) will return.
+
+![factory reset](img/restore-factory-settings.png)
 
 ## ELM327 Configuration
 
