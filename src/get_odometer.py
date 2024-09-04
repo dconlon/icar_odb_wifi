@@ -12,3 +12,4 @@ odometer = OBDCommand("ODOMETER", "Odometer", b"01A6", 6, uas(0x25), ECU.ENGINE,
 response = icar.query(odometer, force=True) # force to avoid checking if commands is in obd.commands
 
 print(f"Odometer: {response.value}")
+
