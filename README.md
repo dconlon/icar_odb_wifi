@@ -3,11 +3,11 @@ I needed to make the EV battery state of charge % from my vehicle accessible pro
 
 ## Vgate iCar Pro WiFi
 
-The [Vgate iCar 2 WiFi](https://www.vgatemall.com/products-detail/i-20/) is [available on eBay](https://www.ebay.co.uk/itm/315178202059) for ~£16 (or AliExpress for less).  It plugs into the ODB2 port of the vehicle and is small and unobtrusive enough to leave plugged in inside the car permanently.
+The [Vgate iCar 2 WiFi](https://www.vgatemall.com/products-detail/i-20/) is [available on eBay](https://www.ebay.co.uk/itm/315178202059) for ~£16 (or AliExpress for less).  It plugs into the OBD2 port of the vehicle and is small and unobtrusive enough to leave plugged in inside the car permanently.
 
 Internally it consists of: 
 
-1. ELM327 ODB to RS232 interpreter ([manual](https://www.elmelectronics.com/DSheets/ELM327DSH.pdf))
+1. ELM327 OBD to RS232 interpreter ([manual](https://www.elmelectronics.com/DSheets/ELM327DSH.pdf))
 2. [Hi-Flying LPT230](http://www.hi-flying.com/hf-lpt230) UART to WiFi module - 1MB flash version ([manual](https://fccid.io/2ACSV-HF-LPT230/User-Manual/Users-Manual-3552381.pdf))
 
 Out of the box the LPT230 is configured as an AP broadcasting an open network with SSID “V-LINK”.  After connecting to the WiFi network the LPT230 is 192.168.0.10 and its TCP port 35000 provides transparent bi-directional access to the RS232 side of the ELM327.
@@ -16,7 +16,7 @@ Out of the box the LPT230 is configured as an AP broadcasting an open network wi
 
 Considering that the vehicle OBD2 port is writable, I don’t want the iCar plugged in permanently broadcasting an open WiFi network.  
 
-The 1MB flash version of the LPT230 unfortunately does not have a full web interface but it is sufficient to change WiFi configuration to station mode to have the LPT230 connect to your home WiFi instead of it being an open AP.  Whilst connected to the V-LINK WiFi open a web browser to http://192.168.0.10, username "guest”, password “&^)@@)” (obtained using AT+WEBU):
+The 1MB flash version of the LPT230 unfortunately does not have a full web interface but it is sufficient to change WiFi configuration to station mode to have the LPT230 connect to your home WiFi instead of it being an open AP.  Whilst connected to the V-LINK WiFi open a web browser to http://192.168.0.10.  My device required username "guest” with password “&^)@@)”, another user had success with "admin" and "admin". If neither combination works, the username and password may be obtained using AT+WEBU (see below):
 
 ![web interface](img/web-interface.png)
 
